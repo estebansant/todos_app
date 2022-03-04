@@ -1,0 +1,49 @@
+.box{
+    margin-top: 10px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.box__check{
+    font: 1.4rem;
+    color: black;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+.box__todo{
+    width: 262px;
+    height: 35px;
+    border-radius: 8px;
+    background-color: #BEBDBD;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.todo__text{
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #0C1B32;
+    margin-left: 15px;
+}
+.todo__delete{
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #0C1B32;
+    margin-right: 15px;
+}
+.todo__delete:hover{
+    color: red;
+    cursor: pointer;
+}
+.box__check--active{
+    color: green;
+}
+.box__todo--active{
+    background-color: #81C0FF;
+}
+.todo__text--active{
+    text-decoration: line-through;
+}

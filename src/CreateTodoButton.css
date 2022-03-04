@@ -1,0 +1,22 @@
+.todo__button{
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    background-color: #81C0FF;
+    box-shadow: 0px 6px 25px rgba(83, 202, 235, 0.5);
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    color: #FAFAFA;
+    font-size: 5.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transform: rotate(0);
+    transition: .4s ease;
+}
+.todo__button:hover {
+    transform: rotate(180deg);
+  }
