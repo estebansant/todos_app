@@ -10,6 +10,8 @@ import { TodoItem } from '../TodoItem';
 import { CreateTodoButton } from '../CreateTodoButton';
 
 function AppUI({
+  loading,
+  error,
   randomMotivation,  
   totalTodos,
   completedTodos,
@@ -40,6 +42,10 @@ function AppUI({
       <TodoHide />
 
       <TodoList>
+        {error && <p>Panic! There was an error...</p>}
+        {loading && <p>We are loading, dont panic...</p>}
+        {(!loading && !searchedTodos.length) && <p>Create your first Todo!</p>}
+
         {searchedTodos.map(todo => (
           <TodoItem
             key={todo.text}

@@ -19,35 +19,61 @@ let randomMotivation = motivation[Math.floor(Math.random()*motivation.length)]
 
 function useLocalStorage (itemName, initialValue) {
 
-  let localStorageItem = localStorage.getItem('itemName');
-  let parsedItem; 
-  
-  if(!localStorageItem){
-    localStorage.setItem('itemName', JSON.stringify(initialValue));
-    parsedItem = initialValue;
-  }else{
-    parsedItem = JSON.parse(localStorageItem);
-  }
+  let [error, setError] = React.useState(false);
+  let [loading, setLoading] = React.useState(true);
+  let [item, setItem] = React.useState(initialValue);
 
-  let [item, setItem] = React.useState(parsedItem);
+  React.useEffect(() => {
+    setTimeout(() => {
+      try{
+        let localStorageItem = localStorage.getItem('itemName');
+        let parsedItem; 
+        
+        if(!localStorageItem){
+          localStorage.setItem('itemName', JSON.stringify(initialValue));
+          parsedItem = initialValue;
+        }else{
+          parsedItem = JSON.parse(localStorageItem);
+        }
+
+        setItem (parsedItem);
+        setLoading (false);
+      } catch(error){
+        setError(error);
+      }
+      }, 1000);
+  }, [])
+
 
   let saveItem = (newItem) =>{
-    let stringedItem = JSON.stringify(newItem);
-    localStorage.setItem('itemName', stringedItem);
-    setItem(newItem);
+    try{
+      let stringedItem = JSON.stringify(newItem);
+      localStorage.setItem('itemName', stringedItem);
+      setItem(newItem);
+    } catch(error){
+      setError(error);
+    }
+    
   }
 
-  return [
+  return {
     item,
     saveItem,
-  ];
+    loading,
+    error,
+  };
 }
 
 /*Setting up the App component to work propperly using states, custom hooks and events*/
 
 function App() {
 
-  let[todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+  let{
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage('TODOS_V1', []);
   
   let [searchValue, setSearchValue] = React.useState('');
 
@@ -87,16 +113,12 @@ function App() {
     saveTodos(newTodos);
   };
 
-  /*Reac effect*/
-
-  React.useEffect(() => {
-    console.log('use effect');
-  }, []);
-
   /*returning the variables to AppUI so it can use them there to make the app work*/
 
   return (
     <AppUI 
+      loading = {loading}
+      error = {error}
       randomMotivation={randomMotivation}
       totalTodos={totalTodos}
       completedTodos={completedTodos}
