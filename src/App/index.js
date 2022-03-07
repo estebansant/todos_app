@@ -1,14 +1,7 @@
 import React from 'react';
-import {AppUI} from './AppUI';
+import {AppUI} from './one.js';
 
-
-let defaultTodos =[
-  {text: "go to classes", completed: false},
-  {text: "take a shower", completed: true},
-  {text: "have dinner", completed: false},
-  {text: "relax", completed: false},
-  {text: "Go to sleep", completed: false},
-]
+/*Creating a random message to display on the app each time it loads*/
 
 let motivation =[
   "Keep the good work!",
@@ -22,9 +15,40 @@ let motivation =[
 
 let randomMotivation = motivation[Math.floor(Math.random()*motivation.length)]
 
+/*Creating a custom Hook to host the Local Storage state*/
+
+function useLocalStorage (itemName, initialValue) {
+
+  let localStorageItem = localStorage.getItem('itemName');
+  let parsedItem; 
+  
+  if(!localStorageItem){
+    localStorage.setItem('itemName', JSON.stringify(initialValue));
+    parsedItem = initialValue;
+  }else{
+    parsedItem = JSON.parse(localStorageItem);
+  }
+
+  let [item, setItem] = React.useState(parsedItem);
+
+  let saveItem = (newItem) =>{
+    let stringedItem = JSON.stringify(newItem);
+    localStorage.setItem('itemName', stringedItem);
+    setItem(newItem);
+  }
+
+  return [
+    item,
+    saveItem,
+  ];
+}
+
+/*Setting up the App component to work propperly using states, custom hooks and events*/
+
 function App() {
 
-  let [todos, setTodos] = React.useState(defaultTodos);
+  let[todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+  
   let [searchValue, setSearchValue] = React.useState('');
 
   let completedTodos = todos.filter(todo => !!todo.completed).length;
@@ -44,12 +68,15 @@ function App() {
     searchedTodos = todos;
   };
 
+
+  /*Events to complete or delete a todo*/
+
   let completeTodo = (text) =>{
     let todoIndex = todos.findIndex(todo => todo.text === text);
 
     let newTodos = [...todos];
     newTodos[todoIndex].completed = true;
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
 
   let deleteTodo = (text) =>{
@@ -57,8 +84,16 @@ function App() {
 
     let newTodos = [...todos];
     newTodos.splice(todoIndex, 1)
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
+
+  /*Reac effect*/
+
+  React.useEffect(() => {
+    console.log('use effect');
+  }, []);
+
+  /*returning the variables to AppUI so it can use them there to make the app work*/
 
   return (
     <AppUI 
