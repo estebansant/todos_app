@@ -1,9 +1,13 @@
 import React from 'react';
 import './MotivationalMessage.css';
+import {TodoContext} from '../TodoContext';
 
-function MotivationalMessage (props){
+function MotivationalMessage (){
+
+    let {randomMotivation} = React.useContext(TodoContext);
+
     return(
-        <h2 className='motivation'>{props.message}</h2>
+        <h2 className='motivation'>{randomMotivation}</h2>
     );
 }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import {TodoContext} from '../TodoContext';
 import{ Date } from '../Date';
 import { Title} from '../Title';
 import { MotivationalMessage } from '../MotivationalMessage';
@@ -9,38 +10,27 @@ import { TodoList } from '../TodoList';
 import { TodoItem } from '../TodoItem';
 import { CreateTodoButton } from '../CreateTodoButton';
 
-function AppUI({
-  loading,
-  error,
-  randomMotivation,  
-  totalTodos,
-  completedTodos,
-  searchValue,
-  setSearchValue,
-  searchedTodos,
-  completeTodo,
-  deleteTodo,
-}) {
+function AppUI() {
+
+  let {error,
+    loading,
+    searchedTodos,
+    completeTodo,
+    deleteTodo} = React.useContext(TodoContext);
+
   return (
     <React.Fragment>
 
       <Date />
       <Title />
-      <MotivationalMessage
-        message={randomMotivation}
-      />
+      <MotivationalMessage />
 
-      <TodoCounter
-        total={totalTodos}
-        completed={completedTodos}
-      />
-      <TodoSearch
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
+      <TodoCounter />
+      <TodoSearch />
 
       <TodoHide />
 
+      
       <TodoList>
         {error && <p>Panic! There was an error...</p>}
         {loading && <p>We are loading, dont panic...</p>}
@@ -56,6 +46,7 @@ function AppUI({
           />
         ))}
       </TodoList>
+
 
       <CreateTodoButton />
     </React.Fragment>
