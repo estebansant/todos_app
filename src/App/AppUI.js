@@ -1,15 +1,13 @@
 import React from 'react';
 import {TodoContext} from '../TodoContext';
-import{ Date } from '../Date';
 import { Title} from '../Title';
-import { MotivationalMessage } from '../MotivationalMessage';
 import { TodoCounter } from '../TodoCounter';
 import { TodoSearch } from '../TodoSearch';
-import { TodoHide } from '../TodoHide';
 import { TodoList } from '../TodoList';
 import { TodoItem } from '../TodoItem';
 import { CreateTodoButton } from '../CreateTodoButton';
 import { Modal } from '../Modal';
+import { TodoForm } from '../TodoForm';
 
 function AppUI() {
 
@@ -25,14 +23,10 @@ function AppUI() {
   return (
     <React.Fragment>
 
-      <Date />
       <Title />
-      <MotivationalMessage />
 
       <TodoCounter />
       <TodoSearch />
-
-      <TodoHide />
 
       
       <TodoList>
@@ -53,7 +47,7 @@ function AppUI() {
 
       {openModal && (
         <Modal>
-          <p>This is fine *fire*</p>
+          <TodoForm />
         </Modal>
       )}
 
