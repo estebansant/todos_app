@@ -6,14 +6,17 @@
     justify-content: space-around;
 }
 .box__check{
-    font: 1.4rem;
     color: black;
-    font-weight: 500;
-    margin-bottom: 12px;
+    width: 28px;
+    height: 28px;
+    margin-bottom: 8px;
+    margin-right: 5px;
+    cursor: pointer;
 }
+
 .box__todo{
-    width: 262px;
-    height: 35px;
+    width: 258px;
+    height: 45px;
     border-radius: 8px;
     background-color: #BEBDBD;
     margin-bottom: 12px;
@@ -23,15 +26,15 @@
     flex-wrap: wrap;
 }
 .todo__text{
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 500;
     color: #0C1B32;
     margin-left: 15px;
 }
 .todo__delete{
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: #0C1B32;
+    width: 20px;
+    height: 25px;
+    color: black;
     margin-right: 15px;
 }
 .todo__delete:hover{
@@ -40,6 +43,7 @@
 }
 .box__check--active{
     color: green;
+    cursor: default;
 }
 .box__todo--active{
     background-color: #81C0FF;

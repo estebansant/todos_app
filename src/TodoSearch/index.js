@@ -1,6 +1,7 @@
 import React from 'react';
 import './TodoSearch.css';
 import {TodoContext} from '../TodoContext';
+import {BsSearch} from 'react-icons/bs'
 
 function TodoSearch() {
 
@@ -12,12 +13,15 @@ function TodoSearch() {
     };
   
     return (
-      <input
-        className="search__bar"
-        placeholder="Search"
-        value={searchValue}
-        onChange={onSearchValueChange}
-      />
+      <div className="search__container">
+        <input
+          className="search__container--bar"
+          placeholder="Search"
+          value={searchValue}
+          onChange={onSearchValueChange}
+        />
+        <BsSearch className="search__container--icon"/>
+      </div>
     );
   }
 

@@ -26,23 +26,26 @@ function TodoForm(props) {
     }
 
     return(
-        <form onSubmit={onSubmit}>
-            <label>Write your new Todo</label>
+        <form onSubmit={onSubmit} className="popup">
+            <label className="popup__message">Write your new Todo</label>
             <textarea
                 value={newTodoValue}
                 onChange={onWrite}
-                placeholder="Get ready for the meal"
+                placeholder="Write it here"
+                className="popup__input"
             />
-            <div>
+            <div className="popup__buttons">
                 <button 
                     type="button"
                     onClick={onCancel}
+                    className="popup__buttons--cancel"
                 >
                     Cancel
                 </button>
 
                 <button
                     type="submit"
+                    className="popup__buttons--submit"
                 >
                     Add
                 </button>
