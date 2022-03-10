@@ -5,6 +5,16 @@ const TodoContext = React.createContext();
 
 function TodoProvider(props) {
 
+  /*Setting up the current date*/
+
+  const calendar = new Date();
+  const weekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const monthYear = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  
+  const day = weekDay[calendar.getDay()];
+  const month = monthYear[calendar.getMonth()];
+  const date = calendar.getDate();
+
    /*Creating a random message to display on the app each time it loads*/
 
    const motivation =[
@@ -75,6 +85,9 @@ function TodoProvider(props) {
       loading,
       error,
       totalTodos,
+      day,
+      month,
+      date,
       motivation,
       randomMessage,
       setRandomMessage,
