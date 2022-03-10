@@ -4,6 +4,23 @@ import { useLocalStorage } from './useLocalStorage';
 const TodoContext = React.createContext();
 
 function TodoProvider(props) {
+
+   /*Creating a random message to display on the app each time it loads*/
+
+   const motivation =[
+    "Keep the good work!",
+    "Just do your best",
+    "Get your job done",
+    "Stop resting and start making",
+    "Dreams don't work, unless you do",
+    "The obstacle is the way through",
+    "Find a moment for everything",
+];
+
+  const [randomMessage, setRandomMessage] = React.useState('');
+
+/*Using the custom hook, useLocalStorage*/
+
   const {
     item: todos,
     saveItem: saveTodos,
@@ -27,6 +44,8 @@ function TodoProvider(props) {
       return todoText.includes(searchText);
     });
   }
+
+  /*Events to complete, delete or add a todo*/
 
   const addTodo = (text) => {
     const newTodos = [...todos];
@@ -56,6 +75,9 @@ function TodoProvider(props) {
       loading,
       error,
       totalTodos,
+      motivation,
+      randomMessage,
+      setRandomMessage,
       completedTodos,
       searchValue,
       setSearchValue,

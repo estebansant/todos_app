@@ -1,6 +1,8 @@
 import React from 'react';
 import {TodoContext} from '../TodoContext';
+import { Date } from '../Date';
 import { Title} from '../Title';
+import { MotivationalMessage } from '../MotivationalMessage';
 import { TodoCounter } from '../TodoCounter';
 import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
@@ -22,8 +24,9 @@ function AppUI() {
 
   return (
     <React.Fragment>
-
+      <Date />
       <Title />
+      <MotivationalMessage />
 
       <TodoCounter />
       <TodoSearch />
