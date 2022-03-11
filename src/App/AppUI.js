@@ -1,4 +1,7 @@
 import React from 'react';
+import { TodosLoading } from '../TodosLoading';
+import { TodosError } from '../TodosError';
+import { EmptyTodos } from '../EmptyTodos';
 import {TodoContext} from '../TodoContext';
 import { Date } from '../Date';
 import { Title} from '../Title';
@@ -33,10 +36,10 @@ function AppUI() {
 
       
       <TodoList>
-        {error && <p>Panic! There was an error...</p>}
-        {loading && <p>We are loading, dont panic...</p>}
-        {(!loading && !searchedTodos.length) && <p>Create your first Todo!</p>}
-
+        {error && <TodosError />}
+        {loading && <TodosLoading />}
+        {(!loading && !searchedTodos.length) && <EmptyTodos />}
+        
         {searchedTodos.map(todo => (
           <TodoItem
             key={todo.text}
