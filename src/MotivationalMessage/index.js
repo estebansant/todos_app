@@ -1,12 +1,7 @@
 import React from 'react';
 import './MotivationalMessage.css';
-import {TodoContext} from '../TodoContext';
 
-function MotivationalMessage (){
-
-    const {motivation} = React.useContext(TodoContext);
-
-    const {randomMessage, setRandomMessage} = React.useContext(TodoContext);
+function MotivationalMessage ({motivation, randomMessage, setRandomMessage}){
 
         React.useEffect(() => {
             setRandomMessage(motivation[Math.floor(Math.random()*motivation.length)]);

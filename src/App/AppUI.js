@@ -3,6 +3,7 @@ import { TodosLoading } from '../TodosLoading';
 import { TodosError } from '../TodosError';
 import { EmptyTodos } from '../EmptyTodos';
 import {TodoContext} from '../TodoContext';
+import { TodoHeader } from '../TodoHeader';
 import { Date } from '../Date';
 import { Title} from '../Title';
 import { MotivationalMessage } from '../MotivationalMessage';
@@ -23,16 +24,42 @@ function AppUI() {
     deleteTodo,
     openModal,
     setOpenModal,
+    totalTodos, 
+    completedTodos,
+    searchValue, 
+    setSearchValue,
+    motivation,
+    randomMessage,
+    setRandomMessage,
+    day, 
+    month, 
+    date,
   } = React.useContext(TodoContext);
 
   return (
     <React.Fragment>
-      <Date />
-      <Title />
-      <MotivationalMessage />
+      <TodoHeader>
+        <Date 
+          day={day}
+          month={month}
+          date={date}
+        />
+        <Title />
+        <MotivationalMessage
+          motivation={motivation}
+          randomMessage={randomMessage}
+          setRandomMessage={setRandomMessage}
+        />
 
-      <TodoCounter />
-      <TodoSearch />
+        <TodoCounter 
+          totalTodos={totalTodos}
+          completedTodos={completedTodos}
+        />
+        <TodoSearch 
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
+      </TodoHeader>
 
       
       <TodoList>

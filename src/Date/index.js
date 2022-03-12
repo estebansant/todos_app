@@ -1,10 +1,7 @@
 import React from 'react';
 import './Date.css';
-import {TodoContext} from '../TodoContext';
 
-function Date (){
-
-    const {day, month, date} = React.useContext(TodoContext);
+function Date ({day, month, date}){
 
     return(
         <p className='date'>{day}, {month} {date}</p>
