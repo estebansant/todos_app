@@ -1,10 +1,9 @@
 import React from 'react';
 import './Date.css';
 
-function Date ({day, month, date}){
-
+function Date ({day, month, date, loading}){
     return(
-        <p className='date'>{day}, {month} {date}</p>
+        <p className={`date ${!!loading && "date__loading"}`}>{day}, {month} {date}</p>
     );
 }
 

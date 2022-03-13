@@ -1,7 +1,7 @@
 import React from 'react';
 import './MotivationalMessage.css';
 
-function MotivationalMessage ({motivation, randomMessage, setRandomMessage}){
+function MotivationalMessage ({motivation, randomMessage, setRandomMessage, loading}){
 
         React.useEffect(() => {
             setRandomMessage(motivation[Math.floor(Math.random()*motivation.length)]);
@@ -10,7 +10,7 @@ function MotivationalMessage ({motivation, randomMessage, setRandomMessage}){
     
 
       return(
-        <h2 className='motivation'>{randomMessage}</h2>
+        <h2 className={`motivation ${!!loading && "motivation__loading"}`}>{randomMessage}</h2>
     );
     
 }

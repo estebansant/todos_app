@@ -14,6 +14,7 @@ import { TodoForm } from '../TodoForm';
 import { TodosLoading } from '../TodosLoading';
 import { TodosError } from '../TodosError';
 import { EmptyTodos } from '../EmptyTodos';
+import { EmptySearchResult } from '../EmptySearchResult';
 
 
 function App() {
@@ -47,12 +48,16 @@ function App() {
           day={day}
           month={month}
           date={date}
+          loading={loading}
         />
-        <Title />
+        <Title 
+          loading={loading}
+        />
         <MotivationalMessage
           motivation={motivation}
           randomMessage={randomMessage}
           setRandomMessage={setRandomMessage}
+          loading={loading}
         />
 
         <TodoCounter 
@@ -72,13 +77,10 @@ function App() {
         loading={loading}
         totalTodos={totalTodos}
         searchedTodos={searchedTodos}
-        searchText={searchValue}
         onError={() => <TodosError />}
         onLoading={() => <TodosLoading />}
         onEmptyTodos={() => <EmptyTodos />}
-        onEmptySearchResult={
-          (searchText) => <p className="empty__search">No hay resultados para {searchText}</p>
-        }
+        onEmptySearchResult={() => <EmptySearchResult searchText={searchValue}/>}
       >
         {todo => (
           <TodoItem
@@ -103,6 +105,7 @@ function App() {
       <CreateTodoButton
         setOpenModal = {setOpenModal}
         openModal={openModal}
+        loading={loading}
       />
     </React.Fragment>
   );

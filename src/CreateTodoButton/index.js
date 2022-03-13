@@ -1,7 +1,7 @@
 import React from 'react';
 import './CreateTodoButton.css';
 
-function CreateTodoButton({ openModal, setOpenModal }){
+function CreateTodoButton({ openModal, setOpenModal, loading}){
 
     const onClickButton = () => {
         setOpenModal(!openModal);
@@ -9,7 +9,7 @@ function CreateTodoButton({ openModal, setOpenModal }){
     
     return(
         <button 
-            className='todo__button'
+            className={`todo__button ${!!loading && "todo__button--loading"}`}
             onClick={onClickButton}
         >
             +

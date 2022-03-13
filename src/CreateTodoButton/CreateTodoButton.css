@@ -21,3 +21,6 @@
 .todo__button:hover {
     transform: rotate(180deg);
   }
+.todo__button--loading {
+    opacity: 25%;
+}

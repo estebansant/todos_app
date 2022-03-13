@@ -4,3 +4,6 @@
     font-weight: bold;
     padding-bottom: 7px;
 }
+.title__loading{
+    opacity: 25%;
+}
