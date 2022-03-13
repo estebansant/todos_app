@@ -2,7 +2,7 @@ import React from 'react';
 import './TodoSearch.css';
 import {BsSearch} from 'react-icons/bs'
 
-function TodoSearch({searchValue, setSearchValue}) {
+function TodoSearch({searchValue, setSearchValue, loading}) {
 
     const onSearchValueChange = (event) => {
       console.log(event.target.value);
@@ -16,8 +16,9 @@ function TodoSearch({searchValue, setSearchValue}) {
           placeholder="Search"
           value={searchValue}
           onChange={onSearchValueChange}
+          disabled={loading}
         />
-        <BsSearch className="search__container--icon"/>
+        <BsSearch className={`search__container--icon ${!!loading && "search__container--icon__loading"}`}/>
       </div>
     );
   }

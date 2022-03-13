@@ -1,7 +1,6 @@
 import React from 'react';
 import { useLocalStorage } from './useLocalStorage';
 
-
 function useTodos() {
 
   /*Setting up the current date*/
@@ -28,11 +27,12 @@ function useTodos() {
 
   const [randomMessage, setRandomMessage] = React.useState('');
 
-/*Using the custom hook, useLocalStorage*/
+  /*Using the custom Hook*/
 
   const {
     item: todos,
     saveItem: saveTodos,
+    sincronizeItem: sincronizeTodos,
     loading,
     error,
   } = useLocalStorage('TODOS_V1', []);
@@ -41,6 +41,8 @@ function useTodos() {
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
+
+  /*Searching todos in the search bar*/
 
   let searchedTodos = [];
 
@@ -54,7 +56,7 @@ function useTodos() {
     });
   }
 
-  /*Events to complete, delete or add a todo*/
+  /*Add, complete and delete a Todo*/
 
   const addTodo = (text) => {
     const newTodos = [...todos];
@@ -80,25 +82,26 @@ function useTodos() {
   };
   
   return {
-      loading,
-      error,
-      totalTodos,
-      day,
-      month,
-      date,
-      motivation,
-      randomMessage,
-      setRandomMessage,
-      completedTodos,
-      searchValue,
-      setSearchValue,
-      searchedTodos,
-      addTodo,
-      completeTodo,
-      deleteTodo,
-      openModal,
-      setOpenModal,
-    }
+    loading,
+    error,
+    day,
+    month,
+    date,
+    motivation,
+    randomMessage, 
+    setRandomMessage,
+    totalTodos,
+    completedTodos,
+    searchValue,
+    setSearchValue,
+    searchedTodos,
+    addTodo,
+    completeTodo,
+    deleteTodo,
+    openModal,
+    setOpenModal,
+    sincronizeTodos,
+  };
 }
 
 export { useTodos };
