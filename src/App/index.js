@@ -43,32 +43,27 @@ function App() {
 
   return (
     <React.Fragment>
-      <TodoHeader>
+      <TodoHeader loading={loading}>
         <Date 
           day={day}
           month={month}
           date={date}
-          loading={loading}
         />
         <Title 
-          loading={loading}
         />
         <MotivationalMessage
           motivation={motivation}
           randomMessage={randomMessage}
           setRandomMessage={setRandomMessage}
-          loading={loading}
         />
 
         <TodoCounter 
           totalTodos={totalTodos}
           completedTodos={completedTodos}
-          loading={loading}
         />
         <TodoSearch 
           searchValue={searchValue}
           setSearchValue={setSearchValue}
-          loading={loading}
         />
       </TodoHeader>
 

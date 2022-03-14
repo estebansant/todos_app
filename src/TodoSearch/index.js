@@ -10,7 +10,7 @@ function TodoSearch({searchValue, setSearchValue, loading}) {
     };
   
     return (
-      <div className="search__container">
+      <div className={`search__container ${!!loading && "search__container--loading"}`}>
         <input
           className="search__container--bar"
           placeholder="Search"

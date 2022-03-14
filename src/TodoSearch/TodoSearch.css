@@ -34,6 +34,6 @@
 .search__container--bar:focus::placeholder{
     color: transparent;
 }
-.search__container--bar:disabled, .search__container--icon__loading{
+.search__container--loading, .search__container--bar:disabled, .search__container--icon__loading{
     opacity: 25%;
 }
