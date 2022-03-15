@@ -11,7 +11,7 @@ function TodoList(props){
 
             {(!!props.totalTodos && !props.searchedTodos.length) && props.onEmptySearchResult(props.searchText)}
 
-            {props.searchedTodos.map(props.children)}
+            {(!props.loading && !props.error) && props.searchedTodos.map(props.children)}
 
             <ul>
                 {props.children}

@@ -32,6 +32,7 @@ function useTodos() {
   const {
     item: todos,
     saveItem: saveTodos,
+    sync: syncTodos,
     sincronizeItem: sincronizeTodos,
     loading,
     error,
@@ -101,6 +102,7 @@ function useTodos() {
     openModal,
     setOpenModal,
     sincronizeTodos,
+    syncTodos,
   };
 }
 

@@ -15,6 +15,7 @@ import { TodosLoading } from '../TodosLoading';
 import { TodosError } from '../TodosError';
 import { EmptyTodos } from '../EmptyTodos';
 import { EmptySearchResult } from '../EmptySearchResult';
+import { ChangeAlertWithStorageListener } from '../ChangeAlert';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
     day, 
     month, 
     date,
+    syncTodos,
   } = useTodos();
 
   /*returning the variables to AppUI so it can use them there to make the app work*/
@@ -101,6 +103,10 @@ function App() {
         setOpenModal = {setOpenModal}
         openModal={openModal}
         loading={loading}
+      />
+
+      <ChangeAlertWithStorageListener 
+        synchronize={syncTodos}
       />
     </React.Fragment>
   );
