@@ -15,7 +15,7 @@ import { TodosLoading } from '../TodosLoading';
 import { TodosError } from '../TodosError';
 import { EmptyTodos } from '../EmptyTodos';
 import { EmptySearchResult } from '../EmptySearchResult';
-import { ChangeAlertWithStorageListener } from '../ChangeAlert';
+import { ChangeAlert } from '../ChangeAlert';
 
 
 function App() {
@@ -105,7 +105,7 @@ function App() {
         loading={loading}
       />
 
-      <ChangeAlertWithStorageListener 
+      <ChangeAlert 
         synchronize={syncTodos}
       />
     </React.Fragment>

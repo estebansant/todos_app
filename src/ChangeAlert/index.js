@@ -1,8 +1,11 @@
 import React from 'react';
 import './ChangeAlert.css';
-import { withStorageListener } from '../withStorageListener';
+import { useStorageListener } from '../useStorageListener';
 
-function ChangeAlert({show, toggleShow}){
+function ChangeAlert({ synchronize }){
+
+    const { show, toggleShow } = useStorageListener(synchronize);
+
     if(show){
         return (
             <div className="change__background">
@@ -23,6 +26,4 @@ function ChangeAlert({show, toggleShow}){
     
 }
 
-const ChangeAlertWithStorageListener = withStorageListener(ChangeAlert)
-
-export {ChangeAlertWithStorageListener};
+export {ChangeAlert};
