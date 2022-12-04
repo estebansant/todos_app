@@ -21,3 +21,8 @@ body{
   position: relative;
   min-height: 100vh;
 }
+@media(min-width:1440px){
+  html{
+    margin: 20%;
+  }
+}

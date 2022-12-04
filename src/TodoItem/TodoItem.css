@@ -26,10 +26,12 @@
     flex-wrap: wrap;
 }
 .todo__text{
+    width: 80%;
     font-size: 1.6rem;
     font-weight: 500;
     color: #0C1B32;
     margin-left: 15px;
+    overflow: hidden;
 }
 .todo__delete{
     width: 20px;
